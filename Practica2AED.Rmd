@@ -187,8 +187,21 @@ ggplot(ice.river.df, aes(x = time)) + geom_line(aes(y = flow.vat), colour = "red
 ggplot(ice.river.df, aes(x = time)) + geom_line(aes(y = flow.vat), colour = "red") + geom_line(aes(y = flow.jok), colour = "blue") + labs(title = "Flujo de hielo en el río", x = "Tiempo", y = "Flujo") + scale_colour_manual(values = c("red", "blue"))
 ggsave("./results/Ejercicio6.pdf")
 ```
-```
 
+## Ejercicio 7
+
+
+```{r}
+load("./data/weatherAUS_distributions.RData")
+ggplot(ds, aes(x = factor(Year), y = MinTemp)) + geom_boxplot()
+```
+```{r}
+ggplot(ds, aes(x = factor(Year),, y = MaxTemp, fill = factor(Year))) + geom_violin() + labs(title = "Distribución de temperaturas máximas por año", x = "Año", y = "Temperatura (ºC)")
+```
+```{r}
+ggplot(ds, aes(x = factor(Year),, y = MaxTemp, fill = factor(Year))) + geom_violin() + labs(title = "Distribución de temperaturas máximas por año", x = "Año", y = "Temperatura (ºC)") + theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
+ggsave("./results/Ejercicio7.pdf")
+```
 
 
 
