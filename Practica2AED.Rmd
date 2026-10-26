@@ -373,4 +373,21 @@ grafico3 <- grafico2 + geom_point() + ggtitle("MinTemp vs MaxTemp")
 grafico3
 ggsave('./results/Ejercicio1.pdf')
 ```
+## Ejercicio 2
+
+```{r}
+ggplot(ds, aes(Temp9am, Pressure9am)) + geom_point()
+```
+```{r}
+ggplot(ds, aes(Temp9am, Pressure9am, shape = RainToday)) + geom_point()
+```
+```{r}
+ggplot(ds, aes(x = Temp9am, y = Pressure9am, colour = RainToday)) + geom_point()
+```
+Se observa mejor el gráfico con el color porque permite ver la relación entre las variables y la variable categórica RainToday. Si no hubiera una separación por colores no se podría ver la relación entre las variables y la variable categórica RainToday.
+
+```{r}
+ggplot(ds, aes(x = Temp9am, y = Pressure9am, colour = RainToday)) + geom_point() + labs(title = "Temperatura y presión atmosférica a las 9am", subtitle = "Relación entre ambas variables", x = "Temperatura a las 9am ", y = "Presión a las 9am ", colour = "Rain Today")
+ggsave("./results/Ejercicio2.pdf")
+```
 
