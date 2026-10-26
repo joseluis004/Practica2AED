@@ -203,5 +203,28 @@ ggplot(ds, aes(x = factor(Year),, y = MaxTemp, fill = factor(Year))) + geom_viol
 ggsave("./results/Ejercicio7.pdf")
 ```
 
+## Ejercicio 8
 
+```{r}
+chol <- read.table("http://assets.datacamp.com/blog_assets/chol.txt", header = TRUE)
+str(chol)
+```
+
+```{r}
+ggplot(chol, aes(x = HEIGHT)) + geom_histogram()
+```
+```{r}
+ggplot(chol, aes(x = HEIGHT)) + geom_histogram() + labs(title = "Histograma de la variable altura", x = "Altura(cm)", y = "Frecuencia")
+```
+```{r}
+ggplot(chol, aes(x = HEIGHT)) + labs(title = "Histograma de la variable altura", x = "Altura(cm)", y = "Frecuencia") + geom_histogram(breaks = seq(155, 195, by =2), fill = "blue",  alpha = 0.5, color = "red") + labs(title = "Histograma de la variable altura", x = "Altura (cm)", y = "Frecuencia")
+```
+
+```{r}
+ggplot(chol, aes(x = HEIGHT)) + geom_histogram(aes(y = after_stat(density)), breaks = seq(155, 195, by = 2), fill = "blue", alpha = 0.5, col = "red") + geom_density(col = "green") + labs(title = "Histograma de la variable Altura", x = "Altura (cm)", y = "Frecuencia")
+```
+```{r}
+ggplot(chol, aes(x = HEIGHT)) + geom_histogram(aes(y = after_stat(density)), breaks = seq(155, 195, by = 2), fill = "blue", alpha = 0.5, col = "red") + geom_density(col = "green") + labs(title = "Histograma de la variable Altura", x = "Altura (cm)", y = "Frecuencia") + facet_grid(MORT ~ .)
+ggsave("./results/Ejercicio8.pdf")
+```
 
