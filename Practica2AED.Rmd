@@ -419,4 +419,37 @@ ggsave("./results/Ejercicio3.pdf")
 ```
 La diferencia entre geom_point() y geom_jitter() es que geom_point() genera un gráfico de dispersión sobre la variable categórica, mientras que geom_jitter() añade un pequeño desplazamiento aleatorio a los puntos para evitar el solapamiento y mejorar la visibilidad de los datos.
 
+## Ejercicio 4
+
+```{r}
+load("./data/Ejercicio4_Data.Rdata")
+ls(DatosEjer4)
+str(DatosEjer4)
+```
+
+```{r}
+as.Date(DatosEjer4$Fecha)
+```
+
+```{r}
+class(DatosEjer4$Fecha)
+```
+
+```{r}
+ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour = Fabricante)) + geom_point()
+```
+Como se puede observar el gráfico de dispersión no es el más adecuado para mostrar series temporales, en su luhgar se podría utilizar un gráfico de líneas para mostrar la evolución de las ventas a lo largo del tiempo.
+
+```{r}
+ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour = Fabricante)) + geom_point() + geom_line()
+```
+```{r}
+ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour = Fabricante)) + geom_point() + geom_line(aes(linetype = Fabricante))
+```
+```{r}
+ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour = Fabricante)) + geom_point() + geom_line(aes(linetype = Fabricante))+ labs(title = "Ventas mensuales de diferentes compañías tecnológicas")
+ggsave("./results/Ejercicio4.pdf")
+```
+
+
 
