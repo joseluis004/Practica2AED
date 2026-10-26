@@ -355,7 +355,7 @@ Compila el proyecto como **pdf** y como **html** y observa el fichero obtenido. 
 
 ```
 
-##Ejercicio 1
+## Ejercicio 1
 
 ```{r}
 library(ggplot2)
@@ -390,4 +390,33 @@ Se observa mejor el gráfico con el color porque permite ver la relación entre 
 ggplot(ds, aes(x = Temp9am, y = Pressure9am, colour = RainToday)) + geom_point() + labs(title = "Temperatura y presión atmosférica a las 9am", subtitle = "Relación entre ambas variables", x = "Temperatura a las 9am ", y = "Presión a las 9am ", colour = "Rain Today")
 ggsave("./results/Ejercicio2.pdf")
 ```
+##Ejercicio 3
+
+```{r}
+load("data/iris_tidy.Rdata"); str(iris.tidy)
+```
+
+```{r}
+iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value)) + geom_point()
+iris.grafico1
+```
+```{r}
+iris.grafico2 <-  ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_point()
+iris.grafico2
+```
+```{r}
+iris.grafico2 + facet_grid(Measure ~ .)
+```
+```{r}
+iris.grafico2 + facet_grid(. ~ Measure)
+```
+Con el gráfico dispuesto en filas se observa mejor la relación entre las variables y la variable categórica Part, ya que no existe solapamiento de nombres en el eje x.
+
+```{r}
+iris.grafico3 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_jitter() +facet_grid(Measure ~ .)
+iris.grafico3
+ggsave("./results/Ejercicio3.pdf")
+```
+La diferencia entre geom_point() y geom_jitter() es que geom_point() genera un gráfico de dispersión sobre la variable categórica, mientras que geom_jitter() añade un pequeño desplazamiento aleatorio a los puntos para evitar el solapamiento y mejorar la visibilidad de los datos.
+
 
